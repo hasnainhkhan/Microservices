@@ -1,5 +1,10 @@
 package com.userservices.entities;
 
-public class UserEntity {
+import jakarta.persistence.Entity;
 
+@Entity
+public class UserEntity {
+	
+	private String id;
+	private String name;
 }

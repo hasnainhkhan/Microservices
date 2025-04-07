@@ -38,8 +38,9 @@ public class UserController {
 	}
 	
 	@GetMapping
-	public List<UserEntity> getAll() {
-		return userServices.getAll();
+	public ResponseEntity<List<UserEntity>> getAll() {
+		List<UserEntity> users = userServices.getAll();
+		return ResponseEntity.ok(users);
 	}
 	
 	@GetMapping("/{id}")

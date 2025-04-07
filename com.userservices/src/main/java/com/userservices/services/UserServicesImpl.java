@@ -2,6 +2,7 @@ package com.userservices.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,8 @@ public class UserServicesImpl implements UserServices{
 
 	@Override 
 	public UserEntity createUser(UserEntity users) {
+		String randomUID = UUID.randomUUID().toString();
+		users.setId(randomUID);
 		return userServiceRepo.save(users);
 		
 	}

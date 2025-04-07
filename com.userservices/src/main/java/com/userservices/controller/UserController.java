@@ -32,9 +32,9 @@ public class UserController {
 	private UserServices userServices;
 	
 	@PostMapping
-	public UserEntity createUser(@RequestBody UserEntity user) {
+	public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
 		UserEntity user1 = userServices.createUser(user);
-		return user1;
+		return ResponseEntity.status(HttpStatus.CREATED).body(user1);
 	}
 	
 	@GetMapping
@@ -43,8 +43,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public UserEntity getUserById(@PathVariable String id) {
-		return userServices.findById(id);
+	public ResponseEntity<UserEntity> getUserById(@PathVariable String id) {
+		
+		UserEntity user =  userServices.findById(id);
+		return ResponseEntity.ok(user);
 	}
 	
 	@DeleteMapping("/{id}")

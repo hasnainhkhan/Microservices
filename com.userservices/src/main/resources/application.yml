@@ -9,8 +9,8 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
-    show-sql: true
-
+#    show-sql: true   
+#	 if you want to show sql commond so uncomment upper query
 application:
   name: USER-SERVICE
 

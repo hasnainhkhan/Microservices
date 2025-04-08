@@ -147,6 +147,6 @@ spring.jpa.show-sql=true
 spring.application.name=RATING-SERVICE
 server.port=8083
 ```
-
+✍️ AuthorHasnain Haidarhhk2170@gmail.comFullstack DeveloperSpring Boot, Data JPA, MySQL, Python, Java, etc
 ---
 

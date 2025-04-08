@@ -17,7 +17,9 @@ A hotel rating microservices application that manages users, ratings, and hotels
 
 ---
 
-## 📦 Tech Stack
+## 📆 Common Tech Stack
+
+All services in this microservices ecosystem use the following base technologies:
 
 - Java 21
 - Spring Boot 3.4.x
@@ -26,9 +28,12 @@ A hotel rating microservices application that manages users, ratings, and hotels
 - Maven
 - Lombok (for boilerplate reduction)
 
+> You can use different technologies for different microservices according to your requirements.
+> You can also use multiple databases according to your choices.
+
 ---
 
-## 📌 API Endpoints
+## 📌 API Endpoints - UserService
 
 | Method | Endpoint      | Description       |
 | ------ | ------------- | ----------------- |
@@ -40,7 +45,7 @@ A hotel rating microservices application that manages users, ratings, and hotels
 
 ---
 
-## 💾 MySQL Configuration (`application.properties`)
+## 💾 MySQL Configuration (`application.properties`) - UserService
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/userservice
@@ -73,18 +78,7 @@ This microservice is responsible for managing **Hotel** data. It operates alongs
 
 ---
 
-## 📦 Tech Stack
-
-- Java 21
-- Spring Boot 3.4.x
-- Spring Data JPA
-- MySQL
-- Maven
-- Lombok
-
----
-
-## 📌 API Endpoints
+## 📌 API Endpoints - HotelService
 
 | Method | Endpoint       | Description        |
 | ------ | -------------- | ------------------ |
@@ -96,7 +90,7 @@ This microservice is responsible for managing **Hotel** data. It operates alongs
 
 ---
 
-## 💾 MySQL Configuration (`application.properties`)
+## 💾 MySQL Configuration (`application.properties`) - HotelService
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/hotelservice
@@ -129,18 +123,7 @@ A microservice for handling **User Ratings** of hotels. It allows users to rate 
 
 ---
 
-## 📦 Tech Stack
-
-- Java 21
-- Spring Boot 3.4.x
-- Spring Data JPA
-- MySQL
-- Maven
-- Lombok
-
----
-
-## 📌 API Endpoints
+## 📌 API Endpoints - RatingService
 
 | Method | Endpoint                    | Description             |
 | ------ | --------------------------- | ----------------------- |
@@ -151,7 +134,7 @@ A microservice for handling **User Ratings** of hotels. It allows users to rate 
 
 ---
 
-## 💾 MySQL Configuration (`application.properties`)
+## 💾 MySQL Configuration (`application.properties`) - RatingService
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/ratingservice

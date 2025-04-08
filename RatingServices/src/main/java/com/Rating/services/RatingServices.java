@@ -2,11 +2,10 @@ package com.Rating.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 
 import com.Rating.entities.RatingEntity;
 
-@Service
+
 public interface RatingServices {
 	
 	//create rating

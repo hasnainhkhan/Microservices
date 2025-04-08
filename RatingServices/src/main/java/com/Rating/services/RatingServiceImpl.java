@@ -1,12 +1,15 @@
 package com.Rating.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.Rating.entities.RatingEntity;
 import com.Rating.repositories.RatingsRepo;
 
+@Service
 public class RatingServiceImpl implements RatingServices{
 	
 	@Autowired
@@ -14,6 +17,8 @@ public class RatingServiceImpl implements RatingServices{
 
 	@Override
 	public RatingEntity create(RatingEntity rating) {
+		String uuid = UUID.randomUUID().toString();
+		rating.setRatingId(uuid);
 		return ratingsRepo.save(rating);
 	}
 

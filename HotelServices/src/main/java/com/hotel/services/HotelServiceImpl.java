@@ -10,7 +10,7 @@ import com.hotel.entities.HotelEntity;
 import com.hotel.exception.ResourceNotFoundException;
 import com.hotel.repositories.HotelRepo;
 
-@Service
+
 public class HotelServiceImpl implements HotelService{
 	
 	@Autowired

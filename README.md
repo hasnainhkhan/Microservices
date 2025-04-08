@@ -13,9 +13,10 @@ A simple **User Management Microservice** built using **Spring Boot**, **Spring 
 - MySQL database integration
 - Spring Boot 3.x compatible
 
----
+---![image](https://github.com/user-attachments/assets/7118b45f-a1a0-47b8-b70f-7fcc0744719f)
 
-## 📦 Tech Stack
+
+## 📦 Tech Stack (Common for all services)
 
 - Java 21
 - Spring Boot 3.4.x
@@ -24,10 +25,13 @@ A simple **User Management Microservice** built using **Spring Boot**, **Spring 
 - Maven
 - Lombok (for boilerplate reduction)
 
+> You can use multiple databases or technologies depending on the service requirements.
+
 ---
 
 ## 📁 Project Structure
 
+(Include structure details here)
 
 ---
 
@@ -51,3 +55,14 @@ spring.datasource.username=root
 spring.datasource.password=yourpassword
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+```
+
+---
+
+## ✍️ Author
+
+**Hasnain Haidar**  
+hhk2170@gmail.com  
+Fullstack Developer  
+Spring Boot, Data JPA, MySQL, Python, Java, etc
+

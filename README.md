@@ -1,8 +1,6 @@
-# 🧑‍💼 UserService Microservice
+# UserService Microservice
 
-A hotel rating microservices application that manages users, ratings, and hotels. It is built using **Spring Boot**, **Spring Data JPA**, and **MySQL**. This service supports full CRUD operations for managing users.
-
----
+A simple **User Management Microservice** built using **Spring Boot**, **Spring Data JPA**, and **MySQL**. This service supports full CRUD operations for managing users.
 
 ## 🚀 Features
 
@@ -17,9 +15,7 @@ A hotel rating microservices application that manages users, ratings, and hotels
 
 ---
 
-## 📆 Common Tech Stack
-
-All services in this microservices ecosystem use the following base technologies:
+## 📦 Tech Stack (Common for all services)
 
 - Java 21
 - Spring Boot 3.4.x
@@ -28,24 +24,29 @@ All services in this microservices ecosystem use the following base technologies
 - Maven
 - Lombok (for boilerplate reduction)
 
-> You can use different technologies for different microservices according to your requirements.
-> You can also use multiple databases according to your choices.
+> You can use multiple databases or technologies depending on the service requirements.
 
 ---
 
-## 📌 API Endpoints - UserService
+## 📁 Project Structure
 
-| Method | Endpoint      | Description       |
-| ------ | ------------- | ----------------- |
-| POST   | `/users`      | Create a new user |
-| GET    | `/users`      | Get all users     |
-| GET    | `/users/{id}` | Get user by ID    |
-| PUT    | `/users/{id}` | Update user by ID |
-| DELETE | `/users/{id}` | Delete user by ID |
+(Include structure details here)
 
 ---
 
-## 💾 MySQL Configuration (`application.properties`) - UserService
+## 📌 API Endpoints
+
+| Method | Endpoint        | Description              |
+|--------|------------------|--------------------------|
+| POST   | `/users`         | Create a new user        |
+| GET    | `/users`         | Get all users            |
+| GET    | `/users/{id}`    | Get user by ID           |
+| PUT    | `/users/{id}`    | Update user by ID        |
+| DELETE | `/users/{id}`    | Delete user by ID        |
+
+---
+
+## 💾 MySQL Configuration (in `application.properties`)
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/userservice
@@ -53,100 +54,14 @@ spring.datasource.username=root
 spring.datasource.password=yourpassword
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-spring.application.name=USER-SERVICE
-server.port=8081
 ```
 
 ---
 
-# 🏨 HotelService Microservice
+## ✍️ Author
 
-This microservice is responsible for managing **Hotel** data. It operates alongside `UserService` and `RatingService` as part of the hotel rating application.
-
----
-
-## 🚀 Features
-
-- Create new hotels
-- Get all hotels
-- Get hotel by ID
-- Update hotel details
-- Delete a hotel
-- RESTful API design
-- Integrated with MySQL
-- Spring Boot 3.x compatible
-
----
-
-## 📌 API Endpoints - HotelService
-
-| Method | Endpoint       | Description        |
-| ------ | -------------- | ------------------ |
-| POST   | `/hotels`      | Create a new hotel |
-| GET    | `/hotels`      | Get all hotels     |
-| GET    | `/hotels/{id}` | Get hotel by ID    |
-| PUT    | `/hotels/{id}` | Update hotel by ID |
-| DELETE | `/hotels/{id}` | Delete hotel by ID |
-
----
-
-## 💾 MySQL Configuration (`application.properties`) - HotelService
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/hotelservice
-spring.datasource.username=root
-spring.datasource.password=yourpassword
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-
-spring.application.name=HOTEL-SERVICE
-server.port=8082
-```
-
----
-
-# ⭐ RatingService Microservice
-
-A microservice for handling **User Ratings** of hotels. It allows users to rate hotels and stores their feedback. Interacts with both `UserService` and `HotelService`.
-
----
-
-## 🚀 Features
-
-- Create a new rating
-- Get all ratings
-- Get ratings by user
-- Get ratings by hotel
-- RESTful API design
-- Spring Boot 3.x compatible
-
----
-
-## 📌 API Endpoints - RatingService
-
-| Method | Endpoint                    | Description             |
-| ------ | --------------------------- | ----------------------- |
-| POST   | `/ratings`                  | Create a new rating     |
-| GET    | `/ratings`                  | Get all ratings         |
-| GET    | `/ratings/users/{userId}`   | Get ratings by User ID  |
-| GET    | `/ratings/hotels/{hotelId}` | Get ratings by Hotel ID |
-
----
-
-## 💾 MySQL Configuration (`application.properties`) - RatingService
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/ratingservice
-spring.datasource.username=root
-spring.datasource.password=yourpassword
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-
-spring.application.name=RATING-SERVICE
-server.port=8083
-```
-✍️ AuthorHasnain Haidarhhk2170@gmail.comFullstack DeveloperSpring Boot, Data JPA, MySQL, Python, Java, etc
----
+**Hasnain Haidar**  
+hhk2170@gmail.com  
+Fullstack Developer  
+Spring Boot, Data JPA, MySQL, Python, Java, etc
 

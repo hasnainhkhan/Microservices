@@ -12,7 +12,16 @@ spring:
 #    show-sql: true   
 #	 if you want to show sql commond so uncomment upper query
 application:
-  name: USER-SERVICE
+  name: HOTEL-SERVICE
 
 server:
   port: 8082
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

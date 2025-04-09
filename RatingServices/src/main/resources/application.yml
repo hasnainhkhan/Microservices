@@ -9,10 +9,19 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
-#    show-sql: true   
-#  if you want to show sql commond so uncomment upper query
+    show-sql: true  # Uncomment this if you want to show SQL commands
+
 application:
-  name: USER-SERVICE
+  name: RATING-SERVICE
 
 server:
   port: 8083
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true  # Correct key is 'prefer-ip-address', not 'ip-address'

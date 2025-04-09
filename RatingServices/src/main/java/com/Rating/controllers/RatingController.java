@@ -29,5 +29,10 @@ public class RatingController {
 	public ResponseEntity<List<RatingEntity>>getRatingsById(@PathVariable String id){
 		return ResponseEntity.status(HttpStatus.OK).body(ratingServices.getByUserId(id));
 	}
+	
+	@GetMapping
+	public ResponseEntity<List<RatingEntity>>getAll(){
+		return ResponseEntity.status(HttpStatus.OK).body(ratingServices.getAll());
+	}
 
 }

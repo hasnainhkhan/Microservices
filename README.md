@@ -1,5 +1,5 @@
 # UserService Microservice
-
+## Simple Services
 A simple **User Management Microservice** built using **Spring Boot**, **Spring Data JPA**, and **MySQL**. This service supports full CRUD operations for managing users.
 
 ## 🚀 Features
@@ -56,12 +56,12 @@ spring.datasource.password=yourpassword
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
-
+__
 ---
 
 ## ✍️ Author
 
-**Hasnain Haidar**  
+**Hasnain Haidar** Author
 hhk2170@gmail.com  
 Fullstack Developer  
 Spring Boot, Data JPA, MySQL, Python, Java, etc

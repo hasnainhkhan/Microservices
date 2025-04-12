@@ -66,6 +66,8 @@ public class UserServicesImpl implements UserServices{
 	public UserEntity updateById(UserEntity user) {
 		return userServiceRepo.save(user);
 	}
+	
+	
 
 
 }

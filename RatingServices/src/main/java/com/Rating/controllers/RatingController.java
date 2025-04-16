@@ -30,6 +30,8 @@ public class RatingController {
 		return ResponseEntity.status(HttpStatus.OK).body(ratingServices.getByUserId(id));
 	}
 	
+	// get all data handler
+	
 	@GetMapping
 	public ResponseEntity<List<RatingEntity>>getAll(){
 		return ResponseEntity.status(HttpStatus.OK).body(ratingServices.getAll());

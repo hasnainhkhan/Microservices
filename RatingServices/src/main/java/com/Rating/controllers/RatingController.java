@@ -31,7 +31,7 @@ public class RatingController {
 	}
 	
 	// get all data handler
-	//
+	// i nothing changes
 	
 	@GetMapping
 	public ResponseEntity<List<RatingEntity>>getAll(){

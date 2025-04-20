@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import org.springframework.web.client.RestTemplate;
+
+import com.userservices.entities.Ratings;
 import com.userservices.entities.UserEntity;
 import com.userservices.exception.ResourceNotFoundException;
 import com.userservices.repository.UserServiceRepo;
@@ -39,7 +41,25 @@ public class UserServicesImpl implements UserServices{
 
 	@Override
 	public List<UserEntity> getAll() {
-		return userServiceRepo.findAll();
+	    List<UserEntity> users = userServiceRepo.findAll();
+
+	    for (UserEntity user : users) {
+	        // Assuming user has a getId() method
+	        String userId = user.getId(); 
+	        
+	        // Fetch ratings for the user
+	        List<Ratings> ratings = restTemplate.getForObject(
+	            "http://localhost:8083/ratings/hotels/" + userId,
+	            List.class
+	        );
+	        
+	        logger.info("Ratings for user {}: {}", userId, ratings);
+
+	        // Assuming UserEntity has setRatings(List<Object>) method
+	        user.setRatings(ratings);
+	    }
+
+	    return users;
 	}
 	
 	@Override 

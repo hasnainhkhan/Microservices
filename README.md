@@ -2,7 +2,7 @@
 ## Simple Services
 A simple **User Management Microservice** built using **Spring Boot**, **Spring Data JPA**, and **MySQL**. This service supports full CRUD operations for managing users.
 
-## 🚀 Features
+## 🚀 Features @
 
 - Create new users
 - Get all users
@@ -57,10 +57,10 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
 __________________
-**
+****
 -----
 
-## ✍️ Author
+## ✍️about Author 
 
 **Hasnain Haidar** Author
 hhk2170@gmail.com  

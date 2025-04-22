@@ -16,7 +16,7 @@ A simple **User Management Microservice** built using **Spring Boot**, **Spring 
 ---![image](https://github.com/user-attachments/assets/7118b45f-a1a0-47b8-b70f-7fcc0744719f)
 
 
-## 📦 Tech Stack (Common for all services)
+## 📦 Tech Stack (Common for all services), 
 
 - Java 21
 - Spring Boot 3.4.x

@@ -31,7 +31,7 @@ public class HotelServiceImpl implements HotelService{
 
 	@Override
 	public HotelEntity getById(String id) {
-		
+		//sout
 		return hotelRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Record Not Found"));
 	}
 

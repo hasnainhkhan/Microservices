@@ -32,4 +32,6 @@ public class UserEntity {
 	
 	@Transient //this anotation avoid to save fields data in database
 	private List<Ratings>ratings = new ArrayList<>();
+	
+	
 }

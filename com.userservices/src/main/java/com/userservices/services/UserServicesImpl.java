@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -49,52 +51,88 @@ public class UserServicesImpl implements UserServices{
 	    List<UserEntity> users = userServiceRepo.findAll();
 
 	    for (UserEntity user : users) {
-	        // Assuming user has a getId() method
-	        String userId = user.getId(); 
-	        
-	        // Fetch ratings for the user
-	        List<Ratings> ratings = restTemplate.getForObject(
-	            "http://localhost:8083/ratings/hotels/" + userId,
-	            List.class
-	        );
-	        
-	        logger.info("Ratings for user {}: {}", userId, ratings);
+	        String userId = user.getId();
 
-	        // Assuming UserEntity has setRatings(List<Object>) method
-	        user.setRatings(ratings);
+	        try {
+	            // Fetch ratings properly
+	            ResponseEntity<List<Ratings>> responseEntity = restTemplate.exchange(
+	                    "http://localhost:8083/ratings/hotels/" + userId,
+	                    HttpMethod.GET,
+	                    null,
+	                    new ParameterizedTypeReference<List<Ratings>>() {}
+	            );
+	            List<Ratings> ratingsList = responseEntity.getBody();
+
+	            logger.info("Ratings for user {}: {}", userId, ratingsList);
+
+	            if (ratingsList != null) {
+	                // Enrich each rating with hotel details
+	                List<Ratings> enrichedRatings = ratingsList.stream().map(rating -> {
+	                    Hotel hotel = null;
+	                    try {
+	                        ResponseEntity<Hotel> hotelResponse = restTemplate.getForEntity(
+	                                "http://localhost:8082/hotels/" + rating.getHotelId(),
+	                                Hotel.class
+	                        );
+	                        hotel = hotelResponse.getBody();
+	                    } catch (Exception ex) {
+	                        logger.error("Failed to fetch hotel with ID: {}", rating.getHotelId(), ex);
+	                    }
+	                    rating.setHotel(hotel);
+	                    return rating;
+	                }).collect(Collectors.toList());
+
+	                user.setRatings(enrichedRatings);
+	            }
+
+	        } catch (Exception ex) {
+	            logger.error("Failed to fetch ratings for userId: {}", userId, ex);
+	        }
 	    }
 
 	    return users;
 	}
+
 	
-	@Override 
+	@Override
 	public UserEntity findById(String id) {
-	    
-	    // 1. Get ratings by user ID
-	    ArrayList<Ratings> ratingsList = restTemplate
-	        .getForObject("http://localhost:8083/ratings/hotels/" + id, ArrayList.class);
-	    logger.info("{}", ratingsList);
-
-	    // 2. Get user info
+	    // 1. Fetch user details
 	    UserEntity user = userServiceRepo.findById(id)
-	        .orElseThrow(() -> new ResourceNotFoundException("Resource not found on server: " + id));
+	            .orElseThrow(() -> new ResourceNotFoundException("User not found with ID: " + id));
 
-	    // 3. For each rating, get the hotel and set it
-	    List<Ratings> enrichedRatings = ratingsList.stream().map(rating -> {
-	        String hotelId = rating.getHotelId(); // Assuming Ratings class has getHotelId()
+	    // 2. Fetch ratings for user (properly with type)
+	    ResponseEntity<List<Ratings>> responseEntity = restTemplate.exchange(
+	            "http://localhost:8083/ratings/hotels/" + id,
+	            HttpMethod.GET,
+	            null,
+	            new ParameterizedTypeReference<List<Ratings>>() {}
+	    );
+	    List<Ratings> ratingsList = responseEntity.getBody();
+	    
+	    logger.info("User Ratings: {}", ratingsList);
 
-	        ResponseEntity<Hotel> hotelResponse = restTemplate
-	            .getForEntity("http://localhost:8082/hotels/" + hotelId, Hotel.class);
+	    if (ratingsList != null) {
+	        // 3. For each rating, fetch hotel details
+	        List<Ratings> enrichedRatings = ratingsList.stream().map(rating -> {
+	            Hotel hotel = null;
+	            try {
+	                ResponseEntity<Hotel> hotelResponse = restTemplate.getForEntity(
+	                        "http://localhost:8082/hotels/" + rating.getHotelId(),
+	                        Hotel.class
+	                );
+	                hotel = hotelResponse.getBody();
+	            } catch (Exception ex) {
+	                logger.error("Failed to fetch hotel with ID: {}", rating.getHotelId(), ex);
+	            }
+	            rating.setHotel(hotel);
+	            return rating;
+	        }).collect(Collectors.toList());
 
-	        Hotel hotel = hotelResponse.getBody();
-	        rating.setHotel(hotel); // Assuming Ratings class has setHotel()
-
-	        return rating;
-	    }).collect(Collectors.toList());
-
-	    user.setRatings(enrichedRatings);
+	        user.setRatings(enrichedRatings);
+	    }
 	    return user;
 	}
+
 
 	
 	@Override

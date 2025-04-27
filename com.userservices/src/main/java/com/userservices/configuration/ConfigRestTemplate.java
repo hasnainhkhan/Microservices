@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class ConfigRestTemplate {
 	
 	@Bean
-	@LoadBalanced
+	@LoadBalanced //for change and use servicename
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}

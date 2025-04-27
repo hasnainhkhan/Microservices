@@ -56,7 +56,7 @@ public class UserServicesImpl implements UserServices{
 	        try {
 	            // Fetch ratings properly
 	            ResponseEntity<List<Ratings>> responseEntity = restTemplate.exchange(
-	                    "http://localhost:8083/ratings/hotels/" + userId,
+	                    "http://RATING-SERVICE/ratings/hotels/" + userId,
 	                    HttpMethod.GET,
 	                    null,
 	                    new ParameterizedTypeReference<List<Ratings>>() {}
@@ -71,7 +71,7 @@ public class UserServicesImpl implements UserServices{
 	                    Hotel hotel = null;
 	                    try {
 	                        ResponseEntity<Hotel> hotelResponse = restTemplate.getForEntity(
-	                                "http://localhost:8082/hotels/" + rating.getHotelId(),
+	                                "http://HOTEL-SERVICE/hotels/" + rating.getHotelId(),
 	                                Hotel.class
 	                        );
 	                        hotel = hotelResponse.getBody();
@@ -102,7 +102,7 @@ public class UserServicesImpl implements UserServices{
 
 	    // 2. Fetch ratings for user (properly with type)
 	    ResponseEntity<List<Ratings>> responseEntity = restTemplate.exchange(
-	            "http://localhost:8083/ratings/hotels/" + id,
+	            "http://RATING-SERVICE/ratings/hotels/" + id,
 	            HttpMethod.GET,
 	            null,
 	            new ParameterizedTypeReference<List<Ratings>>() {}
@@ -117,7 +117,7 @@ public class UserServicesImpl implements UserServices{
 	            Hotel hotel = null;
 	            try {
 	                ResponseEntity<Hotel> hotelResponse = restTemplate.getForEntity(
-	                        "http://localhost:8082/hotels/" + rating.getHotelId(),
+	                        "http://HOTEL-SERVICE/hotels/" + rating.getHotelId(),
 	                        Hotel.class
 	                );
 	                hotel = hotelResponse.getBody();

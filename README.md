@@ -14,6 +14,7 @@ A simple **User Management Microservice** built using **Spring Boot**, **Spring 
 - Delete a user
 - RESTful API design
 - MySQL database integration
+-
 - Spring Boot 3.x compatible
 
 ---![image](https://github.com/user-attachments/assets/7118b45f-a1a0-47b8-b70f-7fcc0744719f)
